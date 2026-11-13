@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>知识库管理平台 · 智能问答与四维权限</title>
+  <link rel="icon" href="/static/favicon.svg" />
+  <link rel="stylesheet" href="/static/css/app.css" />
+</head>
+<body>
+  <div id="login-root"></div>
+
+  <div id="app-root" class="shell hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="/static/logo.svg" alt="logo" />
+        <div>
+          <b>知识库管理平台</b>
+          <small>KNOWLEDGE OS</small>
+        </div>
+      </div>
+      <nav class="nav" id="nav"></nav>
+      <div class="sidebar-foot">
+        <div class="engine-pill" id="engine-pill">
+          <span class="dot"></span><span>引擎加载中…</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="crumb" id="crumb"></div>
+        <div class="spacer"></div>
+        <div class="topbar-search">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path>
+          </svg>
+          <input id="global-search" placeholder="搜索知识与 FAQ，回车跳转" />
+        </div>
+        <div class="user-chip" id="user-chip"></div>
+      </header>
+      <main class="view" id="view"></main>
+    </div>
+  </div>
+
+  <div id="overlay-root"></div>
+  <div class="toast-wrap" id="toast-root"></div>
+
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
