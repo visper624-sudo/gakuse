@@ -22,15 +22,16 @@ class Request:
     body: bytes = b""
     ip: str = ""
     params: dict = field(default_factory=dict)
+
     _json: dict | None = None
     _files: list | None = None
     _ctx: dict | None = None
 
     @property
-    def token(self) -> str | None:
+    def token(self) -> str | None:#**token 自动提取属性**
         auth = self.headers.get("authorization", "")
         if auth.lower().startswith("bearer "):
-            return auth[7:].strip()
+            return auth[7:].strip()#**token 自动提取属性**去掉前后多余空格
         if self.query.get("token"):
             return self.query["token"]
         cookie = self.headers.get("cookie", "")
@@ -71,15 +72,16 @@ class Request:
 
 @dataclass
 class Response:
-    status: int = 200
-    body: bytes = b""
-    content_type: str = "application/json; charset=utf-8"
+    status: int = 200# HTTP 状态码默认 200（成功）
+    body: bytes = b""# 响应体，就是发给客户端的内容。
+    content_type: str = "application/json; charset=utf-8"# 响应内容类型
     headers: dict = field(default_factory=dict)
 
 
 @dataclass
-class StreamResponse:
-    generator: Callable[[], Iterator[bytes]]
+class StreamResponse:#流式响应
+    generator: Callable[[], Iterator[bytes]]# 生成器函数，每次调用生成器函数会返回一个 bytes 对象，
+    # 通过 yield 关键字实现。
     content_type: str = "text/event-stream; charset=utf-8"
     headers: dict = field(default_factory=dict)
 
